@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrer un Code</title>
+    <style>
+        /* CSS pour styliser la page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        #rewardContainer {
+            margin-top: 15px;
+            font-size: 16px;
+            color: green;
+        }
+        #rewardGif {
+            display: none; /* GIF caché par défaut */
+            margin-top: 15px;
+            width: 200px; /* Ajuste la largeur selon tes préférences */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Code Secret</h1>
+        <form id="codeForm">
+            <input type="text" id="code" placeholder="Entrez le code" required>
+            <button type="submit">Valider</button>
+            <p id="rewardContainer"></p> <!-- Conteneur du message de récompense -->
+            <img id="rewardGif" src="https://static.zerochan.net/Neeko.%28League.of.Legends%29.full.2470397.gif" alt="Récompense GIF"> <!-- GIF de récompense -->
+        </form>
+    </div>
+
+    <script>
+        // JavaScript pour valider le code secret
+        document.getElementById('codeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const enteredCode = document.getElementById('code').value;
+            const correctCode = '21'; // Code correct
+            const successMessage = "Félicitations, voici votre récompense ! Rentrez ce code suivant sur le jeu : RA-DB8VHJYWF4ZFVS4U.";
+            const errorMessage = "Code incorrect. Veuillez réessayer.";
+        
+            const messageElement = document.getElementById('rewardContainer');
+            const gifElement = document.getElementById('rewardGif');
+            
+            if (enteredCode === correctCode) {
+                messageElement.style.color = 'green';
+                messageElement.textContent = successMessage;
+                gifElement.style.display = 'block'; // Afficher le GIF
+            } else {
+                messageElement.style.color = 'red';
+                messageElement.textContent = errorMessage;
+                gifElement.style.display = 'none'; // Cacher le GIF en cas d'erreur
+            }
+        });
+    </script>
+</body>
+</html>
